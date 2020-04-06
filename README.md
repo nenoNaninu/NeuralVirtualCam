@@ -1,4 +1,4 @@
-# GanCamEngine
+#  GanVirtualCamEngine
 実際のカメラから取得した画像をGANで変換して仮想カメラ経由で垂れ流すやつ
 
 # Require
