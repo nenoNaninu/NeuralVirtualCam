@@ -1,8 +1,11 @@
 # NeuralVirtualCam
-実際のカメラから取得した画像をGANで変換して仮想カメラ経由で垂れ流すやつ
+実際のカメラから取得した画像をGANで変換して仮想カメラ経由で垂れ流すやつ。
+Linux専用かつGPU必須。
 
 # Require
 ```
+$ apt-get install v4l2loopback-utils
+
 $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 $ conda install -c conda-forge opencv
 $ pip install pyfakewebcam
@@ -35,4 +38,4 @@ ffplay /dev/video1
 
 # ちなみに
 Googleハングアウトにおいては、chromeには問題なく垂れ流せた。
-FireFox,Linuxにおいてはさっくり動画を(普通のwebカメラでさえ)流せなかった...。
+FireFoxにおいてはさっくり動画を(普通のwebカメラでさえ)流せなかった...。
