@@ -1,4 +1,4 @@
-#  GanVirtualCamEngine
+# NeuralVirtualCam
 実際のカメラから取得した画像をGANで変換して仮想カメラ経由で垂れ流すやつ
 
 # Require
@@ -33,3 +33,6 @@ web camに流れているのを確認したい場合
 ffplay /dev/video1
 ```
 
+# ちなみに
+Googleハングアウトにおいては、chromeには問題なく垂れ流せた。
+FireFox,Linuxにおいてはさっくり動画を(普通のwebカメラでさえ)流せなかった...。
