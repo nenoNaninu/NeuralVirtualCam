@@ -26,7 +26,7 @@ $ ls /dev/|grep video
 /dev/video1
 /dev/video2
 ```
-とか出てくるので、今回video3を使っていないので、/dev/video3とかに流したいとする場合
+とか出てくる。今回video3を使っていないので、/dev/video3とかに流したいとする場合
 ```
 $ sudo modprobe v4l2loopback video_nr=3
 ```
