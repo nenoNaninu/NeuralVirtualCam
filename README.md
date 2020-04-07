@@ -26,12 +26,12 @@ $ ls /dev/|grep video
 /dev/video1
 /dev/video2
 ```
-とか出てくるので、使ってない今回video3を使っていないので、/dev/video3とかに流したいとすると、
+とか出てくるので、今回video3を使っていないので、/dev/video3とかに流したいとする場合
 ```
 $ sudo modprobe v4l2loopback video_nr=3
 ```
 とコマンドを叩く。
-
+出力先を用意したら
 ```
 // python main 接続先カメラ番号 出力先パス
 // 上で設定した仮想カメラ(/dev/video3)を出力先パスに渡す
