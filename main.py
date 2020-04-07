@@ -20,15 +20,15 @@ def get_model(path, device="cuda:0"):
     return style_model
 
 
+content_transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Lambda(lambda x: x.mul(255))
+])
+
 def stylize_img(model, img, device="cuda:0"):
     # device = torch.device("cuda" if args.cuda else "cpu")
 
     # content_image = utils.load_image(args.content_image, scale=args.content_scale)
-    content_transform = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Lambda(lambda x: x.mul(255))
-    ])
-
     content_image = content_transform(img)
     content_image = content_image.unsqueeze(0).to(device)
 
@@ -57,11 +57,20 @@ if __name__ == '__main__':
     while (True):
         ret, frame = cap.read()
 
-        dst_img = stylize_img(model, frame)
+        if ret:
+            if model is not None:
+                dst_img = stylize_img(model, cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                virtual_camera.schedule_frame(dst_img)
+                dst_img = cv2.cvtColor(dst_img, cv2.COLOR_RGB2BGR)
 
-        cv2.imshow('frame', dst_img)
-        virtual_camera.schedule_frame(cv2.cvtColor(dst_img, cv2.COLOR_BGR2RGB))
+            else:
+                dst_img = frame
+                virtual_camera.schedule_frame(cv2.cvtColor(dst_img, cv2.COLOR_BGR2RGB))
 
+            cv2.imshow('frame', dst_img)
+        else:
+            print('cannot get frame')
+        
         key = cv2.waitKey(5)
 
         if key == ord('a'):
@@ -75,6 +84,9 @@ if __name__ == '__main__':
 
         if key == ord('f'):
             model = model3
+        
+        if key == ord('z'):
+            model = None
 
         if key == ord('q'):
             break
