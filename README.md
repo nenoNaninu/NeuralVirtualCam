@@ -48,6 +48,10 @@ web camに流れている映像を確認したい場合はffplayコマンドを�
 ffplay /dev/video3
 ```
 
+# こんな感じ。
+LinuxのGPUマシン変換したものを仮想カメラ経由でGoogleハングアウトに垂れ流してMac book proで受信している。
+![app](https://github.com/nenoNaninu/NeuralVirtualCam/blob/master/app.gif)
+
 # ちなみに
 Googleハングアウトにおいては、chromeには問題なく垂れ流せた。
 FireFoxにおいてはさっくり動画を(普通のwebカメラでさえ)流せなかった...。
